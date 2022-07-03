@@ -1,0 +1,27 @@
+{
+  "name": "wasmide-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-express": "^2.13.1",
+    "class-validator": "^0.12.2",
+    "express": "^4.18.1",
+    "graphql": "^14.6.0",
+    "http-proxy": "^1.18.1",
+    "mysql": "^2.18.1",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^5.0.8",
+    "type-graphql": "^0.17.6",
+    "typeorm": "^0.2.25"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.0.7",
+    "@types/node": "^12.12.39",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.2"
+  }
+}
