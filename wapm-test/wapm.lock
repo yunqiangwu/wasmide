@@ -28,6 +28,15 @@ resolved = "https://registry-cdn.wapm.io/packages/_/cowsay/cowsay-0.2.0.tar.gz"
 resolved_source = "registry+cowsay"
 abi = "wasi"
 source = "target/wasm32-wasi/release/cowsay.wasm"
+[modules."yunqiangwu/wyq-stock"."1.0.2".wyq-stock]
+name = "wyq-stock"
+package_version = "1.0.2"
+package_name = "yunqiangwu/wyq-stock"
+package_path = "yunqiangwu/wyq-stock@1.0.2"
+resolved = "https://registry-cdn.wapm.io/packages/yunqiangwu/wyq-stock/wyq-stock-1.0.2.tar.gz"
+resolved_source = "registry+wyq-stock"
+abi = "wasi"
+source = "target/wasm32-wasi/release/wyq-stock.wasm"
 [commands.base32]
 name = "base32"
 package_name = "syrusakbary/coreutils"
@@ -152,4 +161,11 @@ name = "wc"
 package_name = "syrusakbary/coreutils"
 package_version = "0.0.1"
 module = "uutils"
+is_top_level_dependency = true
+
+[commands.wyq-stock]
+name = "wyq-stock"
+package_name = "yunqiangwu/wyq-stock"
+package_version = "1.0.2"
+module = "wyq-stock"
 is_top_level_dependency = true

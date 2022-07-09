@@ -1,0 +1,18 @@
+[package]
+name = "yunqiangwu/code-stock"
+version = "0.0.2"
+description = "code-stock test"
+license = "ISC"
+readme = "README.md"
+
+[dependencies]
+
+[[module]]
+name = "code-stock"
+source = "./target/wasm32-wasi/release/code-stock.wasm"
+abi = "wasi"
+interfaces = {wasi= "0.1.0-unstable"}
+
+[[command]]
+name = "code-stock"
+module = "code-stock"

@@ -1,5 +1,5 @@
 [package]
-name = "hello-rust"
+name = "code-stock"
 version = "0.1.0"
 # edition = "2021"
 
@@ -17,3 +17,8 @@ version = "0.1.0"
 # lto="fat"
 # opt-level =  "s"
 # codegen-units = 1
+
+
+[lib]
+crate-type = ['cdylib']
+path = 'src/main.rs'

@@ -4,3 +4,4 @@ wapm_packages
 target
 
 _temp_dir
+Cargo.lock
