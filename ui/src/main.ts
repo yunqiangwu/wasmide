@@ -20,7 +20,7 @@ const routes = [
   { path: '/', component: HelloWorld },
   // { path: '/about', component: About },
   { path: '/login', component: Login },
-  { path: '/term', component: Term },
+  { path: '/code-ide', component: Term },
   { path: '/info', component: Info },
 ]
 

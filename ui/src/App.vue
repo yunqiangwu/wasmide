@@ -16,7 +16,7 @@
       <!--`<router-link>` 将呈现一个带有正确 `href` 属性的 `<a>` 标签-->
       <router-link to="/">Home</router-link>&nbsp;
       <router-link to="/info">Info</router-link>&nbsp;
-      <router-link to="/term">Term</router-link>&nbsp;
+      <router-link to="/code-ide">Code Ide</router-link>&nbsp;
     </p>
     <!-- 路由出口 -->
     <!-- 路由匹配到的组件将渲染在这里 -->

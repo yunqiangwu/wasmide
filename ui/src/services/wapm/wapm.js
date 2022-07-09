@@ -3,6 +3,7 @@ import table from "text-table";
 import * as idbKeyval from "idb-keyval";
 import { fetchCommandFromWAPM } from "./query";
 import { extractContents } from "@wasmer/wasmfs/lib/tar";
+import * as path from "path-browserify";
 import { lowerI64Imports } from "@wasmer/wasm-transformer";
 
 import welcome from "./callback-commands/welcome";
@@ -130,6 +131,10 @@ const getWasmBinaryFromUrl = async url => {
   return new Uint8Array(buffer);
 };
 
+const my_env = {
+  PWD: '/'
+};
+
 export default class WAPM {
   constructor(wasmTerminal, wasmFs) {
     // Clear the cache. Can be very big.
@@ -150,7 +155,27 @@ export default class WAPM {
       about,
       help,
       download,
-      curl
+      curl,
+      cd: (op) => {
+        let cd_options = op.args[1] || '/';
+
+        if(!cd_options.startsWith('/')) {
+          cd_options = path.join( my_env['PWD'] , cd_options )
+        }
+
+        console.log(`cd to ${cd_options}`);
+
+        if(wasmFs.fs.existsSync(cd_options)) {
+          my_env['PWD']= `${cd_options}/`.replace('//', '/');
+        } else {
+          const err = (new Error(`Err: Path: "${cd_options}" no exists`));
+          console.error(err);
+          return err.message;
+        }
+      },
+      // pwd: (op) => {
+      //   return op.env['PWD'] || '/';
+      // },
     };
 
     // Create a hidden input on the page for opening files
@@ -199,6 +224,7 @@ export default class WAPM {
 
   // Get a command from the wapm manager
   async runCommand(options) {
+    options.env.PWD = my_env.PWD;
     let commandName = options.args[0];
     
     // We convert the `wasmer run thecommand ...` to `thecommand ...`

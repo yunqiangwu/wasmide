@@ -120,6 +120,7 @@ const fetchCommandHandler2 = async(options: {
 //       return program;
 //       // console.log(fileToExecute);
 //     }
+
     if(wapm) {
       return await wapm.runCommand(options);
     } else {
