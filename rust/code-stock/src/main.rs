@@ -5,10 +5,5 @@
 // extern crate wee_alloc;
 
 pub fn main() {
-    println!("Hello, world!");
-}
-
-#[no_mangle]
-pub fn hello (name: &str) {
-    println!("Hello, world! {}", name);
+    println!("Hello, world! wasm");
 }
