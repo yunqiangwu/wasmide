@@ -1,6 +1,6 @@
 import "reflect-metadata"
 import * as path from 'path';
-import { CreateDateColumn, Entity, PrimaryGeneratedColumn, Column, createConnection, Connection } from 'typeorm';
+import { CreateDateColumn, Entity, PrimaryGeneratedColumn, Column, createConnection, Connection, Like, FindManyOptions } from 'typeorm';
 import "reflect-metadata"
 import { buildSchema, ObjectType, Field, ID, Resolver, Query, Ctx, Arg, Mutation } from "type-graphql";
 import { ApolloServer } from "apollo-server-express";
@@ -39,9 +39,15 @@ class PostResolver {
   @Query(returns => [Post])
   async posts(
     @Ctx() context: AppContext,
+    @Arg('content', { nullable: true, description: '查询内容' }) content: string,
   ): Promise<Post[]> {
     const postRepository = context.connection.getRepository(PostEntity);
-    return await postRepository.find();
+
+    return await postRepository.find({
+      ...(content ? {
+        content: Like(`%${content}%`)
+      }: undefined),
+    });
   }
 
   @Mutation(returns => Post)
